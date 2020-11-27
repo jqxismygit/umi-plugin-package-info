@@ -1,6 +1,7 @@
 // ref:
 // - https://umijs.org/plugins/api
 import { IApi } from '@umijs/types';
+import { join } from 'path';
 
 export default function(api: IApi) {
   api.logger.info('use plugin package-info');
