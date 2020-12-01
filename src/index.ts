@@ -19,7 +19,7 @@ export default function(api: IApi) {
             if(!window.globalThis.__package_info__){
               window.globalThis.__package_info__ = {};
             }
-            window.globalThis.__package_info__.${name} = ${JSON.stringify(
+            window.globalThis.__package_info__.["${name}"] = ${JSON.stringify(
                 packageJson,
               )}
           `,
@@ -31,7 +31,7 @@ export default function(api: IApi) {
             if(!window.__package_info__){
               window.__package_info__ = {};
             }
-            window.__package_info__.${name} = ${JSON.stringify(packageJson)}
+            window.__package_info__["${name}"] = ${JSON.stringify(packageJson)}
           `,
             },
           ];
