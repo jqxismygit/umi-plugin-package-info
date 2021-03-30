@@ -6,11 +6,20 @@ import { join } from 'path';
 export default function(api: IApi) {
   api.logger.info('use plugin package-info');
 
-  const { qiankun } = api.userConfig;
+  api.describe({
+    key: 'packageAlias',
+    config: {
+      schema(joi) {
+        return joi.string();
+      },
+    },
+  });
+
+  const { qiankun, packageAlias } = api.userConfig;
 
   if (api?.paths?.cwd) {
     const packageJson = require(join(api.paths.cwd as string, 'package.json'));
-    const name = packageJson.name;
+    const name = packageAlias || packageJson.name;
     api.addHTMLHeadScripts(() => {
       return qiankun
         ? [
